@@ -1,5 +1,6 @@
 //Escrito por whoxer
 
+#include "alloc.h"
 #include "tasks.h"
 
 
@@ -7,16 +8,17 @@ int isit_void(task *STACK) {
  	if (STACK->next == NULL)
   		return SUCESS;
 	 else
-		  return FAILURE;
+		return FAILURE;
 }
 
 task *alloc() {
  	task *new = (task *) malloc(sizeof(task));
- 	if(!new){
+
+ 	if(!new) {
   		printf("Sem memoria disponivel!\n");
  		exit(1);
  	} else {
-  		printf("Nova Tarefa: "); 
+  		printf("Nova Tarefa: ");
 		scanf("%d", &new->num);
   		return new;
  	}
