@@ -3,6 +3,8 @@
 #ifndef TASKS_H
 #define TASKS_H
 
+#define AUTHOR "whoxer"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,15 +15,12 @@
 */
 struct Task {
 	int num;
-	FILE content;
+	char content[30];
 	struct Task *next;
 };
 
 
 typedef struct Task task;
-
-// Tamanho da pilha
-int size;
 
 
 int menu(void);
@@ -29,7 +28,7 @@ int menu(void);
 void init(task *STACK);
 void option(task *STACK, int opt);
 void show(task *STACK);
-void free(task *STACK);
+void free_stack(task *STACK);
 void push(task *STACK);
 
 task *pop(task *STACK);
