@@ -13,7 +13,7 @@ int main(void) {
 		do {
 			opt = menu();
 			option(STACK, opt);
-		} while (opt)
+		} while (opt);
 
 		free(STACK);
 	}
