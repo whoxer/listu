@@ -1,6 +1,8 @@
 // Escrito por whoxer
 #include "tasks.h"
 #include "alloc.h"
+#include <string.h>
+
 
 // Tamanho da pilha
 int size;
@@ -14,12 +16,8 @@ void init(task *STACK) {
 int menu(void) {
 	int opt;
 
-	printf(" tasks.c, v0.0.1\n escrito por %s\n\n", AUTHOR);
-	printf(" [1] criar nova tarefa\n"); //push
-	printf(" [2] exibir todas as tarefas\n"); //show
-	printf(" [3] excluir ultima tarefa\n"); //pop
-	printf(" [4] excluir todas as tarefas\n");//free
-	printf(" [5] sair");
+	printf("\n: ");
+	scanf("%d", &opt);
 
 	return opt;
 }
@@ -29,7 +27,27 @@ void option(task *STACK, int opt) {
 	task *tmp;
 
 	switch (opt) {
-		case 0:
+		case 1:
+			push(STACK);
+			break;
+		case 2:
+		        show(STACK);
+			break;
+		case 3:
+		        tmp = pop(STACK);
+			if (tmp != NULL) {
+			    printf("\nTarefa '%s' removida\n\n", tmp->content);
+			}
+			break;
+		case 4:
+		        free_stack(STACK);
+			init(STACK);
+			break;
+		case 5:
+			exit(SUCESS);
+			break;
+		default:
+		        printf("'%d' é um comando inválido.", opt);
 			break;
 	}
 }
@@ -44,24 +62,13 @@ void show(task *STACK) {
 
 	task *tmp;
 	tmp = STACK->next;
+
 	printf("Tarefas: ");
 
-	while(tmp != NULL) {
-		printf("%5d", tmp->num);
+	while (tmp != NULL) {
+		printf("\n\t * %s", tmp->content);
 		tmp = tmp->next;
 	}
-	printf("\n 	");
-
-	int count;
-
-	for (count = 0; count < size; count++)
-		printf(" ^ ");
-
-	printf("Ordem: ");
-
-	for (count = 0; count < size; count++)
-		printf("%5d", count + 1);
-	printf("\n\n");
 }
 
 void free_stack(task *STACK) {
@@ -87,11 +94,10 @@ void push(task *STACK) {
 	} else {
 		task *tmp = STACK->next;
 
-		while (tmp->next != NULL) {
+		while (tmp->next != NULL)
 			tmp = tmp->next;
 
-			tmp->next = new;
-		}
+		tmp->next = new;
 	}
 	size++;
 }
@@ -101,11 +107,10 @@ task *pop(task *STACK) {
 		printf("Lista de tarefas vazia.\n\n");
 		return NULL;
 	} else {
-		task *last = STACK->next,
-		     *penult = STACK;
+	    task *last = STACK->next, *penult = STACK;
 
-		while (last->next != NULL) {
-			penult = last;
+		while (last->next !=  NULL) {
+		    penult = last;
 			last = last->next;
 		}
 		penult->next = NULL;
