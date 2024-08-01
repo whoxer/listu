@@ -3,7 +3,6 @@
 #include "alloc.h"
 #include "tasks.h"
 
-
 int isit_void(task *STACK) {
  	if (STACK->next == NULL)
   		return SUCESS;
@@ -18,8 +17,8 @@ task *alloc() {
   		printf("Sem memoria disponivel!\n");
  		exit(1);
  	} else {
-  		printf("Nova Tarefa: ");
-		scanf("%d", &new->num);
+		printf(" > ");
+		scanf("%s", new->content);
   		return new;
  	}
 }
