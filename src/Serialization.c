@@ -93,7 +93,7 @@ void write_content(const char *file_name, const char *input)
     }
     else
     {
-        fprintf(list_file, "%s", input);
+        fprintf(list_file, "%s\n", input);
         fflush(list_file);
     }
     fclose(list_file);
