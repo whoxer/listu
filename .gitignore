@@ -3,3 +3,5 @@ debug/
 bin/
 obj/
 notes/
+.listu
+.vscode
