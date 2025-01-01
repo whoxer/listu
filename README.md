@@ -9,6 +9,20 @@ O foco do ```Listu``` é ser um programa simples de linha de comando e para uso 
 
 ## Uso
 
+Instale o ``Listu`` baixando o arquivo compactado release da última versão, com o pacote aberto vá para o diretório e digite ``make install``. Com o
+programa corretamente instalado, digitando listu em seu terminal você verá algo semelhante a isso:
+
+```bash
+    Listu, v0.0.1
+
+    Uso: listu [OPÇÃO]
+    init                    Inicia diretório .listu 
+    new  [ARQUIVO]          Cria lista de tarefas 
+    add  [ARQUIVO] [TAREFA] Adiciona tarefas para arquivo 
+    show [ARQUIVO]          Exibe tarefas de um arquivo 
+    help                    Mostra este menu de ajuda 
+```
+
 Inicie o ```Listu``` diretamente na pasta do seu projeto da sua escolha:
 
 ```bash

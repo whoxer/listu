@@ -53,8 +53,8 @@ run: $(TARGET)
 
 # Instalação do programa
 install: $(TARGET)
-	@echo "Instalando $(TARGET) em /usr/local/bin..."
-	@mkdir -p /usr/local/bin
-	@cp $(TARGET) /usr/local/bin/
-	@chmod +x /usr/local/bin/$(notdir $(TARGET))
-	@echo "Instalação concluída. O programa pode ser executado com '$(notdir $(TARGET))'."
+	@ echo "Instalando $(TARGET) em /usr/local/bin..."
+	@ mkdir -p /usr/local/bin
+	@ cp $(TARGET) /usr/local/bin/
+	@ chmod +x /usr/local/bin/$(notdir $(TARGET))
+	@ echo "Instalação concluída. O programa pode ser executado com '$(notdir $(TARGET))'."
