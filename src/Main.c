@@ -11,7 +11,7 @@ Args params[] = {
     {"new", newparam}, // Cria arquivo para a lista de tarefas
     {"help", help_param}, // Exibe menu de ajuda
     {"show", printparam}, // Escreve conteúdo de arquivo de lista de tarefas na tela
-    {"add", add_param}
+    {"add", add_param} // Adiciona tarefa para arquivo
 };
 
 int main(int argc, char *argv[]) {
