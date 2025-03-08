@@ -62,5 +62,6 @@ void throw_invalid(int argc, char *argv[]);
 
 void add_param(int argc, char *argv[]);
 
+void removeparam(int argc, char *argv[]);
 
 #endif
