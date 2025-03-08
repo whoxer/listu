@@ -35,6 +35,16 @@ void newparam(int argc, char *argv[])
     create_file(argv[2]);
 }
 
+void removeparam(int argc, char *argv[])
+{
+    if (argc < 3)
+    {
+        printf("Erro.\n");
+        return;
+    }
+    remove_file(argv[2]);
+}
+
 void printparam(int argc, char *argv[])
 {
     if (argc < 3)
