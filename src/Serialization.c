@@ -51,6 +51,29 @@ void create_file(const char *file_name)
     return;
 }
 
+void remove_file(const char *file_name)
+{
+    const char *pathtdir = ".listu";
+    char pathtfile[BUFFER_F1];
+
+    snprintf(pathtfile, sizeof(pathtfile), "%s/%s", pathtdir, file_name);
+
+    FILE *list_file = fopen(pathtfile, "r");
+
+    if (list_file == NULL)
+    {
+        perror("Erro ao abrir o arquivo da lista de tarefas. Arquivo pode não ter sido criado ou nome pode estar incorreto.");
+        return;
+    }
+
+    if (remove(pathtfile) == EXIT_SUCCESS)
+    {
+        printf("Lista de tarefas %s removida.\n", file_name);
+        return;
+    }
+    else { printf("Não foi possível remover a lista de tarefas. Verifique se o nome ou se a lista existe.\n");}
+}
+
 void print_content(const char *file_name)
 {
     const char *pathtdir = ".listu";
