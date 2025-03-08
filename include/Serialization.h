@@ -32,5 +32,6 @@ void print_content(const char *file_name);
  * @param file_name 
  */
 void write_content(const char *file_name, const char *input);
+void remove_file(const char *file_name);
 
 #endif
