@@ -116,10 +116,12 @@ void print_content(const char *file_name)
     }
     else 
     {
-        printf("Listu %s: \n", file_name);
+        printf("%s", LISTU_VERSION);
+        printf("\tListu %s \n", file_name);
+        printf("\t--------------------------------\n");
         while (fgets(output_file, sizeof(output_file), list_file) != NULL)
         {
-            printf("* %s", output_file);
+            printf("\t* %s", output_file);
         }
         printf("\n");
     }
