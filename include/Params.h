@@ -64,4 +64,7 @@ void add_param(int argc, char *argv[]);
 
 void removeparam(int argc, char *argv[]);
 
+void listparam(int argc, char *argv[]);
+
+
 #endif
