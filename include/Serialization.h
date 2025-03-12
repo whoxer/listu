@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <dirent.h>
 
 #define MAX_LINES 99
 
@@ -11,7 +12,7 @@
 #define BUFFER_F1 256
 #define BUFFER_F2 1024
 
-#define MAX_INPUT (BUFFER_F2 - 1)
+//#define MAX_INPUT (BUFFER_F2 - 1)
 
 
 
@@ -33,5 +34,7 @@ void print_content(const char *file_name);
  */
 void write_content(const char *file_name, const char *input);
 void remove_file(const char *file_name);
+
+void list_all();
 
 #endif
