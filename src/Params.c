@@ -1,5 +1,6 @@
 #include "Params.h"
 #include "Serialization.h"
+#include "Main.h"
 
 #include <string.h>
 
@@ -54,6 +55,15 @@ void printparam(int argc, char *argv[])
     print_content(argv[2]);
 }
 
+void listparam(int argc, char *argv[])
+{
+    (void)argv;
+    
+    if (argc < 2) { printf("Erro ** Comando inválido."); return;}
+
+    list_all();
+}
+
 void add_param(int argc, char *argv[])
 {
     if (argc < 4)
@@ -69,13 +79,15 @@ void help_param(int argc, char *argv[])
     (void)argc; 
     (void)argv;
 
-    printf("Listu, v0.0.1 \n\n");
+    printf("%s", LISTU_VERSION);
     printf("Uso: listu [OPÇÃO]\n");
     printf("  init                    Inicia diretório .listu \n");
     printf("  new  [ARQUIVO]          Cria lista de tarefas \n");
     printf("  add  [ARQUIVO] [TAREFA] Adiciona tarefas para arquivo \n");
     printf("  show [ARQUIVO]          Exibe tarefas de um arquivo \n");
     printf("  help                    Mostra este menu de ajuda \n");
+    printf("  rm, remove [ARQUIVO]    Remove lista de tarefas\n");
+    printf("  list                    Lista todas os listus existentes \n");
 }
 
 void throw_invalid(int argc, char *argv[])

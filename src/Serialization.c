@@ -3,14 +3,14 @@
 #include <string.h>
 #include <errno.h>
 
-
+#include "Main.h"
 #include "Serialization.h"
 
 void create_dir()
 {
     const char *pathtdir = ".listu";
 
-    char tempPath[1024];
+    char tempPath[BUFFER_F2];
     strcpy(tempPath, pathtdir);
 
     char *current = tempPath;
@@ -28,10 +28,36 @@ void create_dir()
     
     if (mkdir(tempPath, 0755) && errno != EEXIST)
     {
-        perror("Erro ao criar diretório .listu");
+        perror("Erro ao criar diretório .listu \n");
         return;
     }
     return;
+}
+
+void list_all()
+{
+    const char *pathtdir = ".listu";
+
+    DIR *directory = opendir(pathtdir);
+
+    if (directory == NULL)
+    {
+        perror("Erro ao acessar o diretório .listu *** Possível solução:\n\n\t> listu init\n\n");
+        return;
+    }
+
+    struct dirent *entry;
+
+    printf("%s", LISTU_VERSION);
+    printf("\t--------------------------------\n");
+    while ((entry = readdir(directory)) != NULL)
+    {
+        if (entry->d_type == DT_DIR)
+            continue;
+        printf("\t* %s \n", entry->d_name);
+    }
+
+    closedir(directory);
 }
 
 void create_file(const char *file_name) 
@@ -122,3 +148,4 @@ void write_content(const char *file_name, const char *input)
     fclose(list_file);
     return;
 }
+

@@ -7,13 +7,15 @@
 #include "Params.h"
 
 Args params[] = {
-    {"init", create_dir}, // Inicia diretório para o programa Listu
-    {"new", newparam},    // Cria arquivo para a lista de tarefas
-    {"help", help_param}, // Exibe menu de ajuda
-    {"show", printparam}, // Escreve conteúdo de arquivo de lista de tarefas na tela
-    {"add", add_param},   // Adiciona tarefa para arquivo
-    {"rm", removeparam},  // Remove arquivo
-    {"remove", removeparam}};
+    {"init", create_dir},    // Inicia diretório para o programa Listu
+    {"new", newparam},       // Cria arquivo para a lista de tarefas
+    {"help", help_param},    // Exibe menu de ajuda
+    {"show", printparam},    // Escreve conteúdo de arquivo de lista de tarefas na tela
+    {"add", add_param},      // Adiciona tarefa para arquivo
+    {"rm", removeparam},     // Remove arquivo de lista de tarefas
+    {"remove", removeparam}, // Remove arquivo de lista de tarefas
+    {"list", listparam}      // Exibe todas as listas existentes
+};
 
 int main(int argc, char *argv[]) {
     if (argc < 2)
