@@ -3,11 +3,12 @@
 #include <string.h>
 
 
+#include "Config.h"
 #include "Serialization.h"
 #include "Params.h"
 
 Args params[] = {
-    {"init", create_dir},    // Inicia diretório para o programa Listu
+    {"init", initparam},    // Inicia diretório para o programa Listu
     {"new", newparam},       // Cria arquivo para a lista de tarefas
     {"help", help_param},    // Exibe menu de ajuda
     {"show", printparam},    // Escreve conteúdo de arquivo de lista de tarefas na tela
@@ -31,5 +32,6 @@ int main(int argc, char *argv[]) {
             break;
         }
     }
+
     return EXIT_SUCCESS;
 }
