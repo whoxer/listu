@@ -15,7 +15,7 @@
 //#define MAX_INPUT (BUFFER_F2 - 1)
 
 
-
+void init();
 void create_dir();
 void create_file(const char *file_name);
 
@@ -25,7 +25,8 @@ void create_file(const char *file_name);
  * 
  * @param file_name 
  */
-void print_content(const char *file_name);
+void print_with_nlines(const char *file_name);
+void print_without_nlines(const char *file_name);
 
 /**
  * @brief Escreve conteúdo em arquivos
