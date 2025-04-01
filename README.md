@@ -13,12 +13,12 @@ Instale o ``Listu`` baixando o arquivo compactado release da última versão, co
 programa corretamente instalado, digitando listu em seu terminal você verá algo semelhante a isso:
 
 ```bash
-    Listu, v0.0.1
+    Listu, v0.0.2
 
     Uso: listu [OPÇÃO]
     init                    Inicia diretório .listu 
     new  [ARQUIVO]          Cria lista de tarefas 
-    add  [ARQUIVO] [TAREFA] Adiciona tarefas para arquivo 
+    add  [TAREFA] [ARQUIVO] Adiciona tarefas para arquivo 
     show [ARQUIVO]          Exibe tarefas de um arquivo 
     help                    Mostra este menu de ajuda 
 ```
