@@ -1,6 +1,7 @@
 #include "Params.h"
 #include "Serialization.h"
 #include "Main.h"
+#include "Config.h"
 
 #include <string.h>
 
@@ -12,12 +13,14 @@
  */
 void initparam(int argc, char *argv[])
 {
-    if (argc < 3)
+    (void)argv;
+
+    if (argc < 2)
     {
-        printf("Erro.\n");
+        printf("Erro. Número de parâmetros não é suficiente.\n");
         return;
     }
-    create_dir(argv[2]);
+    init();
 }
 
 /**
@@ -40,7 +43,7 @@ void removeparam(int argc, char *argv[])
 {
     if (argc < 3)
     {
-        printf("Erro.\n");
+        printf("Erro. Número de parâmetros não é suficiente\n");
         return;
     }
     remove_file(argv[2]);
@@ -48,11 +51,19 @@ void removeparam(int argc, char *argv[])
 
 void printparam(int argc, char *argv[])
 {
+    load_config();
+    
     if (argc < 3)
     {
         printf("Erro. Nenhum arquivo especificado! \n");
     }
-    print_content(argv[2]);
+
+    if (show_lines())
+    {
+        print_with_nlines(argv[2]);
+    } else {
+        print_without_nlines(argv[2]);
+    }    
 }
 
 void listparam(int argc, char *argv[])
@@ -83,7 +94,7 @@ void help_param(int argc, char *argv[])
     printf("Uso: listu [OPÇÃO]\n");
     printf("  init                    Inicia diretório .listu \n");
     printf("  new  [ARQUIVO]          Cria lista de tarefas \n");
-    printf("  add  [ARQUIVO] [TAREFA] Adiciona tarefas para arquivo \n");
+    printf("  add  [TAREFA] [ARQUIVO] Adiciona tarefas para arquivo \n");
     printf("  show [ARQUIVO]          Exibe tarefas de um arquivo \n");
     printf("  help                    Mostra este menu de ajuda \n");
     printf("  rm, remove [ARQUIVO]    Remove lista de tarefas\n");
