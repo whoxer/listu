@@ -2,6 +2,8 @@
 #include "utils/Serialization.h"
 #include "core/Main.h"
 #include "utils/Config.h"
+#include "utils/ErrorUtils.h"
+
 
 #include <string.h>
 
@@ -17,7 +19,7 @@ void initparam(int argc, char *argv[])
 
     if (argc < 2)
     {
-        printf("Erro. Número de parâmetros não é suficiente.\n");
+        perror(not_enough_params());
         return;
     }
     init();
@@ -33,7 +35,7 @@ void newparam(int argc, char *argv[])
 {
     if (argc < 3)
     {
-        printf("Erro. Você não especificou nenhum nome para a sua lista! \n");
+        perror(non_specified_err());
         return;
     }
     create_file(argv[2]);
@@ -43,7 +45,7 @@ void removeparam(int argc, char *argv[])
 {
     if (argc < 3)
     {
-        printf("Erro. Número de parâmetros não é suficiente\n");
+        perror(not_enough_params());
         return;
     }
     remove_file(argv[2]);
@@ -52,10 +54,10 @@ void removeparam(int argc, char *argv[])
 void printparam(int argc, char *argv[])
 {
     load_config();
-    
+
     if (argc < 3)
     {
-        printf("Erro. Nenhum arquivo especificado! \n");
+        perror(non_specified_err());
     }
 
     if (show_lines())
@@ -70,7 +72,7 @@ void listparam(int argc, char *argv[])
 {
     (void)argv;
     
-    if (argc < 2) { printf("Erro ** Comando inválido."); return;}
+    if (argc < 2) { perror(throw_invalid()); return;}
 
     list_all();
 }
@@ -79,7 +81,7 @@ void add_param(int argc, char *argv[])
 {
     if (argc < 4)
     {
-        printf("Erro. Nome incorreto ou nenhum arquivo especificado! \n");
+        perror(non_specified_err());
         return;
     }
     write_content(argv[2], argv[3]);
@@ -118,11 +120,12 @@ void help_param(int argc, char *argv[])
     }
 }
 
-void throw_invalid(int argc, char *argv[])
+void throw_invalid_param(int argc, char *argv[])
 {
     (void)argc;
-
-    printf("Erro: Comando '%s' inválido \n", argv[1]);
+    (void)argv;
+    
+    perror(throw_invalid());
 
     help_param(0, NULL);
 }
