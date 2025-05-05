@@ -1,21 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <title>Listu</title>
+    <title>Gerenciador de Listas</title>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .list-card {
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 10px;
+        }
+
+        .list-card:hover {
+            background-color: #f8f9fa;
+        }
+
+        .list-card.active {
+            border-left: 4px solid #0d6efd;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
 </head>
-<body class="container">
 
-    <div class="task-list-creator" id="task-list-creator">
+<body>
+    <div class="container py-4">
+        <h1 class="text-center mb-4">📋 Gerenciador de Listas</h1>
 
+        <!-- Formulário para criar NOVA LISTA -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Criar Nova Lista</h5>
+                <form id="newListForm">
+                    <div class="mb-3">
+                        <label for="listTitle" class="form-label">Título da Lista</label>
+                        <input type="text" class="form-control" id="listTitle" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="listDescription" class="form-label">Descrição</label>
+                        <textarea class="form-control" id="listDescription" rows="2"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Criar Lista</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Listas existentes -->
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Minhas Listas</h4>
+                <div id="listsContainer"></div>
+            </div>
+
+            <!-- Tarefas da lista selecionada -->
+            <div class="col-md-8">
+                <div id="tasksSection" style="display: none;">
+                    <h4 id="selectedListTitle"></h4>
+                    <p id="selectedListDescription" class="text-muted"></p>
+
+                    <div class="d-flex mb-3">
+                        <button id="addTaskBtn" class="btn btn-sm btn-success me-2">+ Nova Tarefa</button>
+                    </div>
+
+                    <div id="tasksContainer"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="list-listu">
-        <!-- Exibe todas listas de tarefas recém criadas -->
-    </div>
-
-   <script src="renderer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="renderer.js"></script>
 </body>
+
 </html>

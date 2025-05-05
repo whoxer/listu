@@ -1,6 +1,9 @@
 #include "Config.h"
 
-static Config listu_config = { .lines = false};
+static Config listu_config = { 
+    .lines = false,
+    .set_language = "pt-br"
+};
 
 
 int create_config_file() 
@@ -18,7 +21,7 @@ int create_config_file()
         return EXIT_FAILURE;
     }
 
-    fprintf(toml_config_file, "[general]\n\nlines = false\n");
+    fprintf(toml_config_file, "[general]\n\nlines = false\nlanguage = 'pt-br'");
 
     fclose(toml_config_file);
     return EXIT_SUCCESS;
@@ -61,7 +64,11 @@ void load_config()
     if (general) 
     {
         toml_datum_t lines = toml_bool_in(general, "lines");
-        if (lines.ok) listu_config.lines = lines.u.b;
+        toml_datum_t language = toml_string_in(general, "language");
+        if (lines.ok) 
+            listu_config.lines = lines.u.b;
+        if (language.ok)
+            listu_config.set_language = language.u.s;
     }
 
     toml_free(config);
@@ -70,4 +77,9 @@ void load_config()
 bool show_lines()
 {
     return listu_config.lines;
+}
+
+const char *language()
+{
+    return listu_config.set_language;
 }
