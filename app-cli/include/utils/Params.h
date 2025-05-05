@@ -58,7 +58,7 @@ void help_param(int argc, char *argv[]);
  * @param argv 
  * @param list 
  */
-void throw_invalid(int argc, char *argv[]);
+void throw_invalid_param(int argc, char *argv[]);
 
 void add_param(int argc, char *argv[]);
 
