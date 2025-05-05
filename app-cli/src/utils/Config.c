@@ -1,4 +1,4 @@
-#include "Config.h"
+#include "utils/Config.h"
 
 static Config listu_config = { 
     .lines = false,

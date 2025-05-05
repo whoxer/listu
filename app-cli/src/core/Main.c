@@ -3,9 +3,9 @@
 #include <string.h>
 
 
-#include "Config.h"
-#include "Serialization.h"
-#include "Params.h"
+#include "utils/Config.h"
+#include "utils/Serialization.h"
+#include "utils/Params.h"
 
 Args params[] = {
     {"init", initparam},    // Inicia diretório para o programa Listu

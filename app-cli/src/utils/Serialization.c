@@ -3,9 +3,9 @@
 #include <string.h>
 #include <errno.h>
 
-#include "Main.h"
-#include "Serialization.h"
-#include "Config.h"
+#include "core/Main.h"
+#include "utils/Serialization.h"
+#include "utils/Config.h"
 
 void create_dir()
 {

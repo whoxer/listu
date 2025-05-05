@@ -1,7 +1,7 @@
-#include "Params.h"
-#include "Serialization.h"
-#include "Main.h"
-#include "Config.h"
+#include "utils/Params.h"
+#include "utils/Serialization.h"
+#include "core/Main.h"
+#include "utils/Config.h"
 
 #include <string.h>
 
