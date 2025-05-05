@@ -12,6 +12,7 @@
 
 typedef struct {
     bool lines;
+    const char *set_language;
 } Config;
 
 
@@ -27,6 +28,6 @@ int create_config_file();
 void load_config();
 bool show_lines();
 
-
+const char *language();
 
 #endif

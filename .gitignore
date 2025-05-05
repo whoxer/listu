@@ -6,4 +6,5 @@ notes/
 .listu
 .vscode
 releases
-
+diagrams
+app-desktop/node_modules

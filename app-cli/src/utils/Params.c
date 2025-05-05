@@ -87,18 +87,35 @@ void add_param(int argc, char *argv[])
 
 void help_param(int argc, char *argv[])
 {
+    load_config();
+
     (void)argc; 
     (void)argv;
 
-    printf("%s", LISTU_VERSION);
-    printf("Uso: listu [OPÇÃO]\n");
-    printf("  init                    Inicia diretório .listu \n");
-    printf("  new  [ARQUIVO]          Cria lista de tarefas \n");
-    printf("  add  [TAREFA] [ARQUIVO] Adiciona tarefas para arquivo \n");
-    printf("  show [ARQUIVO]          Exibe tarefas de um arquivo \n");
-    printf("  help                    Mostra este menu de ajuda \n");
-    printf("  rm, remove [ARQUIVO]    Remove lista de tarefas\n");
-    printf("  list                    Lista todas os listus existentes \n");
+    if (strcmp(language(), "pt-br") == 0)
+    {
+        printf("%s", LISTU_VERSION);
+        printf("Uso: listu [OPÇÃO]\n");
+        printf("  init                    Inicia diretório .listu \n");
+        printf("  new  [ARQUIVO]          Cria lista de tarefas \n");
+        printf("  add  [TAREFA] [ARQUIVO] Adiciona tarefas para arquivo \n");
+        printf("  show [ARQUIVO]          Exibe tarefas de um arquivo \n");
+        printf("  help                    Mostra este menu de ajuda \n");
+        printf("  rm, remove [ARQUIVO]    Remove lista de tarefas\n");
+        printf("  list                    Lista todas os listus existentes \n");
+    }
+    if (strcmp(language(), "en") == 0)
+    {
+        printf("%s", LISTU_VERSION);
+        printf("Usage: listu [OPTION]\n");
+        printf("  init                  Initializes the .listu directory \n");
+        printf("  new  [FILE]           Creates a task list \n");
+        printf("  add  [TASK] [FILE]    Adds tasks to the file \n");
+        printf("  show [FILE]           Displays tasks from a file \n");
+        printf("  help                  Shows this help menu \n");
+        printf("  rm, remove [FILE]     Removes the task list\n");
+        printf("  list                  Lists all existing listus \n");
+    }
 }
 
 void throw_invalid(int argc, char *argv[])
