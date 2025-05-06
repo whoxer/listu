@@ -121,7 +121,11 @@ void remove_file(const char *file_name)
 
     if (remove(pathtfile) == EXIT_SUCCESS)
     {
-        printf("Lista de tarefas %s removida.\n", file_name); // TODO: Traduzir isso depois para ingles
+        if (strcmp(language(), "pt-br") == 0)
+            printf("Listu %s removida. \n", file_name);
+        if (strcmp(language(), "en") == 0)
+            printf("Listu %s removed. \n", file_name);
+
         return;
     }
     else { perror(err_to_acess_file());}
@@ -139,7 +143,7 @@ void print_with_nlines(const char *file_name)
     FILE *list_file = fopen(pathtfile, "r");
     if (list_file == NULL)
     {
-        perror(err_to_acess_file()); // isso também é erro de acesso a arquivo ok
+        perror(err_to_acess_file()); 
         return;
     }
     else 
@@ -168,7 +172,7 @@ void print_without_nlines(const char *file_name)
     FILE *list_file = fopen(pathtfile, "r");
     if (list_file == NULL)
     {
-        perror(err_to_acess_file()); // isso também é erro de acesso a arquivo ok
+        perror(err_to_acess_file());
         return;
     }
     else
