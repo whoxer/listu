@@ -27,6 +27,6 @@
  
  **/
 
-#define LISTU_VERSION "Listu, v0.0.2 \n\n"
+#define LISTU_VERSION "Listu, v0.0.3 \n\n"
 
 #endif
