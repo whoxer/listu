@@ -11,7 +11,7 @@ Listu is a lightweight CLI tool written in C, designed to help developers manage
 - 📂 Per-project task lists
 - 🧾 Plain text storage
 - ⚙️ Minimalist and fast
-- 🖥️ Fully terminal-based
+- 🖥️ Terminal-based
 
 ---
 
