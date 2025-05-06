@@ -1,4 +1,5 @@
 #include "utils/Config.h"
+#include "utils/ErrorUtils.h"
 
 static Config listu_config = { 
     .lines = false,
@@ -17,7 +18,7 @@ int create_config_file()
 
     if (toml_config_file == NULL)
     {
-        perror("Erro ao abrir o arquivo de configuração 'config.toml'. Arquivo pode ter sido excluído, movido de lugar ou até mesmo renomeado.\n");
+        perror(err_to_acess_file());
         return EXIT_FAILURE;
     }
 
@@ -39,7 +40,7 @@ void load_config()
 
     if (toml_file_ptr == NULL)
     {
-        perror("Erro ao abrir o arquivo de configuração 'config.toml'. Arquivo pode ter sido excluído, movido de lugar ou até mesmo renomeado.\n");
+        perror(err_to_acess_file());
         return;
     }
 
