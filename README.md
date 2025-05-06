@@ -2,9 +2,9 @@
 
 > A simple, terminal-based task manager for developers.
 
-Listu is a lightweight CLI tool written in C, designed to help developers manage project tasks without leaving the terminal. It was born out of my personal need for a distraction-free alternative to apps like Notion or Evernote.
-
 ![Listu banner](docs/assets/listu-banner.png)
+
+Listu is a lightweight CLI tool written in C, designed to help developers manage project tasks without leaving the terminal. It was born out of my personal need for a distraction-free alternative to apps like Notion or Evernote.
 
 ---
 
