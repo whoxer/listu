@@ -7,4 +7,4 @@ notes/
 .vscode
 releases
 diagrams
-app-desktop/node_modules
+desktop/node_modules
