@@ -6,6 +6,8 @@
 #include "core/Main.h"
 #include "utils/Serialization.h"
 #include "utils/Config.h"
+#include "utils/ErrorUtils.h"
+
 
 void create_dir()
 {
@@ -20,7 +22,7 @@ void create_dir()
         *current = '\0';
         if (mkdir(tempPath, 0755) && errno != EEXIST)
         {
-            perror("Erro ao criar diretório .listu");
+            perror(err_to_create_dir());
             return;
         }
         *current = '/';
@@ -29,7 +31,7 @@ void create_dir()
     
     if (mkdir(tempPath, 0755) && errno != EEXIST)
     {
-        perror("Erro ao criar diretório .listu \n");
+        perror(err_to_create_dir());
         return;
     }
     return;
@@ -50,7 +52,7 @@ void list_all()
 
     if (directory == NULL)
     {
-        perror("Erro ao acessar o diretório .listu *** Possível solução:\n\n\t> listu init\n\n");
+        perror(acess_dir());
         return;
     }
 
@@ -72,7 +74,7 @@ void list_all()
         snprintf(full_path, sizeof(full_path), "%s/%s", pathtdir, entry->d_name);
 
         if (stat(full_path, &st) == -1) {
-            perror("Erro ao verificar arquivos.");
+            perror(err_to_acess_file());
             continue;
         }
         
@@ -95,7 +97,7 @@ void create_file(const char *file_name)
     FILE *list_file = fopen(pathtfile, "w");
     if (list_file == NULL)
     {
-        perror("Erro ao abrir o arquivo da lista de tarefas\n");
+        perror(err_to_acess_file());
         return;
     }
     fclose(list_file);
@@ -113,16 +115,16 @@ void remove_file(const char *file_name)
 
     if (list_file == NULL)
     {
-        perror("Erro ao abrir o arquivo da lista de tarefas. Arquivo pode não ter sido criado ou nome pode estar incorreto.");
+        perror(err_to_acess_file());
         return;
     }
 
     if (remove(pathtfile) == EXIT_SUCCESS)
     {
-        printf("Lista de tarefas %s removida.\n", file_name);
+        printf("Lista de tarefas %s removida.\n", file_name); // TODO: Traduzir isso depois para ingles
         return;
     }
-    else { printf("Não foi possível remover a lista de tarefas. Verifique se o nome ou se a lista existe.\n");}
+    else { perror(err_to_acess_file());}
 }
 
 void print_with_nlines(const char *file_name)
@@ -137,7 +139,7 @@ void print_with_nlines(const char *file_name)
     FILE *list_file = fopen(pathtfile, "r");
     if (list_file == NULL)
     {
-        perror("Erro ao abrir o arquivo da lista de tarefas. Arquivo pode não ter sido criado ou nome pode estar incorreto.");
+        perror(err_to_acess_file()); // isso também é erro de acesso a arquivo ok
         return;
     }
     else 
@@ -166,7 +168,7 @@ void print_without_nlines(const char *file_name)
     FILE *list_file = fopen(pathtfile, "r");
     if (list_file == NULL)
     {
-        perror("Erro ao abrir o arquivo da lista de tarefas. Arquivo pode não ter sido criado ou nome pode estar incorreto.");
+        perror(err_to_acess_file()); // isso também é erro de acesso a arquivo ok
         return;
     }
     else
@@ -194,7 +196,7 @@ void write_content(const char *input, const char *file_name)
     FILE *list_file = fopen(pathtfile, "a");
     if (list_file == NULL)
     {
-        perror("Erro ao abrir o arquivo da lista de tarefas. Arquivo pode não ter sido criado ou nome pode estar incorreto.");
+        perror(err_to_acess_file());
         return;
     }
     else
