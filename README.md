@@ -24,3 +24,4 @@ Listu is a lightweight CLI tool written in C, designed to help developers manage
 ```bash
 # Download the latest release and extract it
 make install
+```
