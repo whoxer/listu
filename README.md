@@ -1,4 +1,4 @@
-[Listu banner](docs/assets/listu-banner.png)
+![Listu banner](docs/assets/listu-banner.png)
 
 > A simple, terminal-based task manager for developers.
 
