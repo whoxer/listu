@@ -89,8 +89,6 @@ void add_param(int argc, char *argv[])
 
 void help_param(int argc, char *argv[])
 {
-    load_config();
-
     (void)argc; 
     (void)argv;
 
